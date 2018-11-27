@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>My Second React App</title>
@@ -5,23 +6,41 @@
   <body>
 
      <div id="container"></div>
+	 
      <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.1.0/umd/react.development.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.0/umd/react-dom.development.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
-     <script type="text/babel">
+     
+	 <script type="text/babel">
+	 
      class Notepad extends React.Component {
-             render() {
+            constructor(props){
+			super(props);
+				this.state = {
+				text: 'Write it here'
+				}
+			}
+			 render() {
                return (
                  <div>
-                   <textarea rows="5" cols="20">Write a thought</textarea>
+                   <textarea rows={this.props.height} cols={this.props.width}>{this.state.text}</textarea>
                  </div>
                );
              }
            }
+		   
+		   const dimen = {
+			height: "5",
+			width: "20"
+			} 
+			
 
            ReactDOM.render(
-             <Notepad />, document.getElementById('container')
+             <Notepad 
+				height={dimen.height}
+				width={dimen.width} />,document.getElementById('container')
            );
+		   
      </script>
   </body>
 </html>
